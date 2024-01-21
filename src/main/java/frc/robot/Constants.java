@@ -1,6 +1,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.pathplanner.lib.path.PathPlannerTrajectory.State;
 
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
@@ -15,18 +16,64 @@ import frc.lib.util.COTSFalconSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
+    public static final class Intake {
+        public static int IntakeMotor = 1;
+    }
+    public static final class WristConstants {
+        public static int wristMotorID = 0;
+        public static double kSVolts = 2;
+        public static double kAVoltSecondSquaredPerRad = 0.05;
+        public static double kGVolts = 0.62;
+        public static double kVVoltSecondPerRad = 1.56;
+        public static double kP = 0.8;
+        public static double kMaxAccelerationRadPerSecSquared;
+        public static double kMaxVelocityRadPerSecond;
+        public static State kArmOffSetRads;
+        public static double pGain = 10.7;
+        public static double iGain = 0.0;
+        public static double dGain = 0.0;
+        public static int currentLimit = 40;
+        public static double positionConversionFactor = (Math.PI*2.0);
+        public static double minAngle = 0;
+        public static double maxAngle = 0;
+        public static double teleopSpeed = 0.5;
+        public static double stowValue = 30;
+        
+    }
+    public static final class ShooterConstants{
+        public static final int SHOOTER_LEFT_MOTOR_PORT = 20;
+        public static final int SHOOTER_RIGHT_MOTOR_PORT = 19;
+        public static final double kP = 0.0004;
+        public static final double kI = 0;
+        public static final double kD = 0;
+        public static final double kIZone = 0;
+        public static final double kFF = 0;
+        public static final double shooterMaxRPM = 6784;
+        public static final double SHOOTER_VELOCITY_THRESHOLD = 100;
+        public static final double kShooterToleranceRPS = 50;//30?
+
+        public static final double kSVolts = 0.05;
+        public static final double kVVoltSecondsPerRotation =
+        // Should have value 12V at free speed...
+        12.0 / (6784/60);
+        
+        public static final int kEncoderCPR = 1024;
+        public static final double kEncoderDistancePerPulse =
+        // Distance units will be rotations
+        1.0 / (double) kEncoderCPR;
+    }
     public static final double stickDeadband = 0.1;
 
     public static final class Swerve {
-        public static final int pigeonID = 0;
+        public static final int pigeonID = 3;
         public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
 
         public static final COTSFalconSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot
-            COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
+            COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L3);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(20.5); //TODO: This must be tuned to specific robot
-        public static final double wheelBase = Units.inchesToMeters(20.5); //TODO: This must be tuned to specific robot
+        public static final double trackWidth = Units.inchesToMeters(19.0); //TODO: This must be tuned to specific robot
+        public static final double wheelBase = Units.inchesToMeters(19.0); //TODO: This must be tuned to specific robot
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
         /* Swerve Kinematics 
@@ -61,7 +108,7 @@ public final class Constants {
 
         /* These values are used by the drive falcon to ramp in open loop and closed loop driving.
          * We found a small open loop ramp (0.25) helps with tread wear, tipping, etc */
-        public static final double openLoopRamp = 0.25;
+        public static final double openLoopRamp = 0.35;
         public static final double closedLoopRamp = 0.0;
 
         /* Angle Motor PID Values */
