@@ -15,7 +15,7 @@ public class exampleAuto extends SequentialCommandGroup {
     
     public exampleAuto(Swerve swerve){
         this.swerve = swerve;
-        autoBuilder.configureHolonomic(swerve::getPose, swerve::resetOdometry, swerve::getRobotRelativeSpeeds, swerve::driveRobotRelative, new HolonomicPathFollowerConfig(new PIDConstants(5,0,0),new PIDConstants(5,0,0),4.5,0.4,new ReplanningConfig()), () -> {var alliance = DriverStation.getAlliance();if(alliance.isPresent()){return alliance.get()==DriverStation.Alliance.Red;}}, swerve);
+        autoBuilder.configureHolonomic(swerve::getPose, swerve::resetOdometry, swerve::getRobotRelativeSpeeds, swerve::driveRobotRelative, new HolonomicPathFollowerConfig(new PIDConstants(5,0,0),new PIDConstants(5,0,0),4.5,0.4,new ReplanningConfig()), () -> {var alliance = DriverStation.getAlliance();if(alliance.isPresent()){return alliance.get()==DriverStation.Alliance.Red;}return false;}, swerve);
         
     }
 }
