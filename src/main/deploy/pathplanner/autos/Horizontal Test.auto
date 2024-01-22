@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 12.723732114130895,
-      "y": 6.394734156989682
+      "x": 9.444422734999318,
+      "y": 3.4238291553506186
     },
     "rotation": 180.0
   },
@@ -11,18 +11,6 @@
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Horizontal test"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Horizontal test"
-          }
-        },
         {
           "type": "path",
           "data": {
